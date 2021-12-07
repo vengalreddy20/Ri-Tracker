@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
-import { Layout, Menu } from 'antd';
+import { Avatar, Layout, Menu } from 'antd';
 import myContext from '../../Context';
 import {
   MenuUnfoldOutlined,
@@ -35,7 +35,7 @@ class SiderDemo extends React.Component {
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{fontSize:"1.3rem",padding:"10px"}}>
             <Menu.Item style={{marginTop:"70px"}} key="1" icon={< FieldTimeOutlined style={{fontSize:"25px"}}/>}>
-             Time Sheet
+            <Link to="/">Time Sheet</Link>
             </Menu.Item>
             <Menu.Item style={{marginTop:"20px"}} key="2" icon={<ProjectOutlined style={{fontSize:"25px"}} />}>
              <Link to="/project"> Projects </Link>
@@ -59,7 +59,7 @@ class SiderDemo extends React.Component {
             <div style={{display:"flex"}}>
             <p style={{fontSize:"20px",marginLeft:"30px",color:"white",paddingTop:"5px",cursor:"pointer"}}> <QuestionOutlined /></p>
             <p style={{fontSize:"20px",marginLeft:"30px",color:"white",paddingTop:"5px",cursor:"pointer"}}> <BellOutlined  /></p>
-            <p style={{fontSize:"20px",marginLeft:"30px",paddingTop:"5px",color:"white",cursor:"pointer"}}><UserOutlined /></p>
+            <Avatar style={{marginLeft:"30px",color:"white",marginTop:"20px",cursor:"pointer"}} alt="user" src="./images/user.png"></Avatar>
             </div>
            
           </Header>

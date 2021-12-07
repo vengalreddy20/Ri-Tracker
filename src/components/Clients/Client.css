@@ -1,0 +1,17 @@
+.clientWidth{
+    margin-left: 13rem !important;
+    width:100vw !important;
+    transition: all 0.3s ease;
+    
+}
+.clientWidthCollapsed{
+    margin-left:7rem !important;
+    width:100vw !important;
+    transition: all 0.3s ease;
+
+    
+}
+.clientTable{
+    background-color: white !important;
+    color:grey !important;
+}

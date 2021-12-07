@@ -8,6 +8,7 @@ import SiderDemo from './components/slider/Slider';
 import Team from './components/Team/Team';
 import Clients from './components/Clients/Clients';
 import myContext from './Context';
+import Timesheet from './components/TimeSheet/Timesheet';
 
 export class App extends Component {
   static contextType=myContext
@@ -15,16 +16,15 @@ export class App extends Component {
     super(props)
   
     this.state = {
-       name:'varun',
        collapsed:true
     }
   }
 
-  handleClick=()=>{
-    this.setState({
-      name:'ajay'
-    })
-  }
+  // handleClick=()=>{
+  //   this.setState({
+  //     name:'ajay'
+  //   })
+  // }
   
   setContextState = (obj) => {
 		console.log('setContextState function', obj);
@@ -38,7 +38,7 @@ export class App extends Component {
       <myContext.Provider 
       value={{
         state:this.state,
-        update:this.handleClick,
+        // update:this.handleClick,
       setContextState:this.setContextState,
       }}
       >
@@ -49,6 +49,7 @@ export class App extends Component {
     
       <Routes>
        <>
+       <Route  exact path="/" element={<Timesheet/>} />
        <Route path="/project" element={<Project/>} />
        <Route path="/clients" element={<Clients />} />
        <Route path="/team" element={<Team />} />
