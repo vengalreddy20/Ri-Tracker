@@ -1,5 +1,5 @@
 import { Container,Card } from '@mui/material'
-import React,{useContext} from 'react'
+import React,{useContext,useEffect,useState} from 'react'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import myContext from '../../Context'
 import "./Client.css"
+import axios from 'axios';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -43,10 +44,32 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
    
   ];
   
+  const key='YjRmOGRkODEtOTdhZC00YTRjLWJiYmMtMWY4YWQ5ZDliZTUy'
+  const url=`https://api.clockify.me/api/v1/workspaces/6192513371e028522c62bc50/clients`
+  function Clients() {
 
-function Clients() {
+  const[data,setData]=useState({})
+
+  useEffect(() => {
+   
+    
+    const fetchdata =async () =>{
+    const response= await axios.get(`${url}`,{
+      headers:{
+        'x-api-key':key
+
+      }
+    })
+    setData(response.data)
+    console.log(response.data)
+
+    }
+    fetchdata()
+    
+  }, [])
     const context=useContext(myContext)
     return (
+   
         <Container className={context.state.collapsed ? 'clientWidthCollapsed' :'clientWidth'}>
              <div>
                 <h1 style={{marginTop:"7rem",marginBottom:"4rem"}}>Clients</h1>
@@ -58,26 +81,26 @@ function Clients() {
         <TableHead>
           <TableRow>
             <StyledTableCell className="clientTable">NAME</StyledTableCell>
-            <StyledTableCell className="clientTable" align="left">PROJECT</StyledTableCell>
-            <StyledTableCell className="clientTable" align="left">LEAD</StyledTableCell>
+            <StyledTableCell className="clientTable" align="left">ADDRESS</StyledTableCell>
+            {/* <StyledTableCell className="clientTable" align="left">LEAD</StyledTableCell>
             <StyledTableCell className="clientTable" align="left">MEMBERS</StyledTableCell>
-            <StyledTableCell className="clientTable" align="left">DAYS</StyledTableCell>
+            <StyledTableCell className="clientTable" align="left">DAYS</StyledTableCell> */}
            
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {data.length > 0 ? data.map((row) => (
+            <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="left">{row.project}</StyledTableCell>
+              <StyledTableCell align="left">{row.address}</StyledTableCell>
               <StyledTableCell align="left">{row.lead}</StyledTableCell>
               <StyledTableCell align="left">{row.members}</StyledTableCell>
               <StyledTableCell align="left">{row.days}</StyledTableCell>
              
             </StyledTableRow>
-          ))}
+          )) : 'no data '}
         </TableBody>
       </Table>
     </TableContainer>

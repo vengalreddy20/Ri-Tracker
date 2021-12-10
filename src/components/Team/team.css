@@ -1,0 +1,13 @@
+.teamWidth{
+    margin-left: 13rem !important;
+    width:100vw !important;
+    transition: all 0.3s ease;
+    
+}
+.teamWidthCollapsed{
+    margin-left:7rem !important;
+    width:100vw !important;
+    transition: all 0.3s ease;
+
+    
+}
