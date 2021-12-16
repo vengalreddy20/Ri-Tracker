@@ -11,7 +11,52 @@
 
     
 }
-.clientTable{
-    background-color: white !important;
-    color:grey !important;
+.main-heading{
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+    font-size: 2rem;
+}
+.clients-heading {
+    margin-top: 5rem;
+}
+.header-part {
+    display: flex;
+    
+}
+.dropdown {
+    padding: 7px;
+    margin-bottom: 3rem;
+    border: 1px solid black;
+}
+
+.searchbar {
+    width: 350px;
+    padding: 5px;
+    margin-left: 3.5rem;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.addtask {
+    width: 250px;
+    padding: 5px;
+    margin-left: 15rem;
+    height: 40px;
+    border: 1px solid black;
+    float: right;
+}
+
+.addbutton {
+    width: 90px;
+    height: 40px;
+    margin-left: 10px;
+
+}
+
+
+.table-heading {
+    background:#E4EAEE;
+    border: 1px solid #c6d2d9 ;
+    padding: 5px;
+    margin:0px;
 }

@@ -12,3 +12,88 @@
     background-color: white !important;
     color:grey !important;
 }
+
+
+.projects-heading {
+    margin-top: 5rem;
+    font-size: 2rem;
+}
+.searchContainer{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+.search-bar{
+ width: 300px !important;
+ margin-right: 1.5rem !important;
+ position: relative;
+}
+.search-icon {
+    font-size: 1.2rem;
+    position: absolute;
+    margin-right:10rem;
+
+    
+}
+
+
+.projects-subheading {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;   
+}
+
+
+/* Dropdown Menu Card */
+.menu-card {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+
+
+
+
+
+/* Tasks*/
+
+.tasks-header-part {
+    display: flex;
+}
+.tasks-dropdown {
+    padding: 7px;
+    margin-bottom: 3rem;
+    border: 1px solid black;
+}
+
+.tasks-searchbar {
+    width: 350px;
+    padding: 5px;
+    margin-left: 10px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.tasks-addtask {
+    width: 250px;
+    padding: 5px;
+    margin-left: 15rem;
+    height: 40px;
+    border: 1px solid black;
+    float: right;
+}
+
+.addbutton {
+    width: 90px;
+    height: 40px;
+    margin-left: 10px;
+
+}
+
+/* Access */
+.access {
+    text-align: center;
+    position: relative;
+    /* margin-left: -20rem; */
+
+}
