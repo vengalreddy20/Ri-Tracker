@@ -13,6 +13,7 @@ import {
   BellOutlined,
   QuestionOutlined 
 } from '@ant-design/icons';
+import styles from './slider.module.css'
 
 const { Header, Sider } = Layout;
 
@@ -31,9 +32,9 @@ class SiderDemo extends React.Component {
   render() {
     return (
       <Layout>
-        <Sider style={{height:"100vh",position:"fixed"}} trigger={null} collapsible collapsed={this.context.state.collapsed}>
+        <Sider className={styles.sidebar} trigger={null} collapsible collapsed={this.context.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{fontSize:"1.3rem",padding:"10px"}}>
+          <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} style={{fontSize:"1.3rem",padding:"10px"}}>
             <Menu.Item style={{marginTop:"70px"}} key="1" icon={< FieldTimeOutlined style={{fontSize:"25px"}}/>}>
             <Link to="/">Time Sheet</Link>
             </Menu.Item>
@@ -48,18 +49,19 @@ class SiderDemo extends React.Component {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header style={{display:"flex",justifyContent:"space-between",alignItems:"center",position:"fixed",top:"0",right:"0",left:"0"}} ><div className="site-layout-background" style={{ fontSize:"30px",color:"blue"}}>
+          <Header className={styles.header}><div className={styles.menu}>
             {React.createElement(this.context.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               onClick: this.toggle,
             })}
             
             </div>
-            <div><h1  style={{color:"white",fontSize:"1.5rem"}}>RI-Tracker</h1></div>
-            <div style={{display:"flex"}}>
-            <p style={{fontSize:"20px",marginLeft:"30px",color:"white",paddingTop:"5px",cursor:"pointer"}}> <QuestionOutlined /></p>
-            <p style={{fontSize:"20px",marginLeft:"30px",color:"white",paddingTop:"5px",cursor:"pointer"}}> <BellOutlined  /></p>
-            <Avatar style={{marginLeft:"30px",color:"white",marginTop:"20px",cursor:"pointer"}} alt="user" src="./images/user.png"></Avatar>
+            <div><h1 className={styles.mainHeading}>RI-Tracker</h1></div>
+            
+            <div className={styles.headerRight}>
+           
+            <p style={{fontSize:"25px",marginLeft:"2rem",color:"grey",paddingTop:"5px",cursor:"pointer"}}> <BellOutlined  /></p>
+            <Avatar style={{marginLeft:"2rem",color:"grey",marginTop:"1.8rem",cursor:"pointer"}} alt="user" src="./images/user.png"></Avatar>
             </div>
            
           </Header>

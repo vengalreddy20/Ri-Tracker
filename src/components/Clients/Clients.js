@@ -74,7 +74,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
              <div>
                 <h1 style={{marginTop:"7rem",marginBottom:"4rem"}}>Clients</h1>
             </div>
-        <Card><h1 style={{color:"grey",marginLeft:"5px"}}>Clients</h1></Card>
+        <Card><h4 style={{color:"grey",marginLeft:"5px"}}>Clients</h4></Card>
 
             <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

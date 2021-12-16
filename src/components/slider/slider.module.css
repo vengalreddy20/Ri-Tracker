@@ -1,0 +1,38 @@
+.sidebar{
+    box-shadow: 1px 0 0 #c6d2d9;
+    background: #fff;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    width: 100vw;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #c6d2d9 ;
+}
+.headerRight{
+    display: flex;
+}
+.menu{
+    color: black;
+    font-size: 2rem;
+    margin-left: -2rem !important;
+    margin-bottom: 1rem !important;
+
+}
+.mainHeading{
+    font-size: 2rem;
+    color:#03A9F4;
+    margin-left: -35rem;
+    margin-top: 1rem;
+
+}

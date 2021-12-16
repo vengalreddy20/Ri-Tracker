@@ -1,0 +1,26 @@
+.logindetails{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-width: 500px;
+    width: 400px;
+    justify-content: center;
+
+}
+.logindetails Input{
+    margin: 20px;
+    padding: 0px 15px;
+}
+.logindetails Button{
+    margin: 20px;
+    
+}
+.login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.siderdemo{
+    display: none;
+}
