@@ -9,6 +9,7 @@ import Team from './components/Team/Team';
 import Clients from './components/Clients/Clients';
 import myContext from './Context';
 import Timesheet from './components/TimeSheet/Timesheet';
+import ProjectCard from './components/projects/ProjectCard';
 
 const projects = [
   {
@@ -71,6 +72,7 @@ export class App extends Component {
        <Route path="/project" element={<Project/>} />
        <Route path="/clients" element={<Clients />} />
        <Route path="/team" element={<Team />} />
+       <Route path="/projectCard" element={<ProjectCard />} />
        </>
      
       </Routes>
