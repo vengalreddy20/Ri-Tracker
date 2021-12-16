@@ -1,22 +1,140 @@
 import React, { useContext, useState } from 'react'
-import { Container } from '@mui/material'
-import { Card, DatePicker, Input, Space } from 'antd';
+import { Container, Button } from '@mui/material'
+import {DatePicker, Input, Space } from 'antd';
 import "./Timesheet.css"
 import myContext from '../../Context'
 import { PlusCircleOutlined, CopyOutlined, SaveOutlined, CloseOutlined } from '@ant-design/icons'
-import { NavDropdown } from 'react-bootstrap'
-// import { Alert } from 'antd'
-import Alert from '@mui/material/Alert';
+
+import DropDown from './DropDown';
+import TempleteCard from './TempleteCard';
+
+import { Modal, } from 'antd';
 
 
 
 
-function Timesheet() {
+
+function Timesheet(props) {
     const context = useContext(myContext)
     const [inputlist, setInputlist] = useState([{}])
-    const [display, setDisplay] = useState(false)
+    const [timeOne, setTimeOne] = useState()
+    const [timeTwo, setTimeTwo] = useState()
+    const [timeThree, setTimeThree] = useState()
+    const [timeFour, setTimeFour] = useState()
+    const [timeFive, setTimeFive] = useState()
+    const [timeSix, setTimeSix] = useState()
+    const [timeSeven, setTimeSeven] = useState()
+    const [name, setName] = useState("")
+    const [selectedItems, setSelectedItems] = useState({})
+    const [templetes, setTempletes] = useState([])
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const handleChangeOne = (e) => {
+        e.preventDefault()
+        setTimeOne(e.target.value)
+        console.log(e);
+    }
+    const getTimeOne = (e) => {
+        e.preventDefault();
+        var num = timeOne;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeOne(num)
+    }
+    const handleChangeTwo = (e) => {
+        e.preventDefault()
+        setTimeTwo(e.target.value)
+        console.log(e);
+    }
+    const getTimeTwo = (e) => {
+        e.preventDefault();
+        var num = timeTwo;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeTwo(num)
+    }
+    const handleChangeThree = (e) => {
+        e.preventDefault()
+        setTimeThree(e.target.value)
+        console.log(e);
+    }
+    const getTimeThree = (e) => {
+        e.preventDefault();
+        var num = timeThree;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeThree(num)
+    }
+    const handleChangeFour = (e) => {
+        e.preventDefault()
+        setTimeFour(e.target.value)
+        console.log(e);
+    }
+    const getTimeFour = (e) => {
+        e.preventDefault();
+        var num = timeFour;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeFour(num)
+    }
+    const handleChangeFive = (e) => {
+        e.preventDefault()
+        setTimeFive(e.target.value)
+        console.log(e);
+    }
+    const getTimeOneFive = (e) => {
+        e.preventDefault();
+        var num = timeFive;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeFive(num)
+    }
+    const handleChangeSix = (e) => {
+        e.preventDefault()
+        setTimeSix(e.target.value)
+        console.log(e);
+    }
+    const getTimeSix = (e) => {
+        e.preventDefault();
+        var num = timeSix;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeSix(num)
+    }
+    const handleChangeSeven = (e) => {
+        e.preventDefault()
+        setTimeSeven(e.target.value)
+        console.log(e);
+    }
+    const getTimeSeven = (e) => {
+        e.preventDefault();
+        var num = timeSeven;
+        var rhours = Math.floor(num / 60);
+        var minutes = (num / 60 - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        num = `${rhours} : ${rminutes}:00`;
+        console.log("num", num)
+        setTimeSeven(num)
+    }
 
-    
+
 
     const handleRemoveClick = index => {
         const list = [...inputlist];
@@ -24,19 +142,62 @@ function Timesheet() {
         setInputlist(list);
     };
 
+
     // handle click event of the Add button
     const handleAddClick = () => {
         setInputlist([...inputlist, {}]);
     };
-    const show = () => {
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
 
-        setDisplay(true)
+    const handleCancel = () => {
+        setIsModalVisible(false);
+        setName("")
+    };
+
+
+    const getData = (e) => {
+        e.preventDefault()
+        setTempletes(templetes => [...templetes, name])
+        setName("")
+        setIsModalVisible(false)
+
+
 
     }
+    const getFilteredProjects = (name) => {
+        const removedItems = { ...selectedItems };
+        delete removedItems[name];
+        const removedItemsList = Object.values(removedItems);
+        return props.projects.filter(item => {
+            return !removedItemsList.includes(item.id);
+        });
+    }
 
-    const onClose = (e) => {
-        console.log(e, 'I was closed.');
+    const getValue = (name) => {
+        return selectedItems[name];
+    }
+
+    const selectItem = (name, value) => {
+        setSelectedItems({
+
+            ...selectedItems,
+            [name]: value
+        });
     };
+    const handleRemoveTemplete= index => {
+        const list = [...templetes];
+        list.splice(index, 1);
+        setTempletes(list);
+    };
+
+    const renderTempleteList = templetes.map((name, i) => (
+        <TempleteCard name={name} handleRemoveTemplete={handleRemoveTemplete}> </TempleteCard>
+
+    ))
+   
+
 
 
     return (
@@ -70,24 +231,24 @@ function Timesheet() {
 
                     </thead>
                     <tbody className="table-body" >
-                        {inputlist.map((x, i) => {
+                        {inputlist.map((i) => {
                             return (<div><tr>
                                 <div>
-                                    <td><NavDropdown id="table-body-title" title={'select Project'}>
-                                        <NavDropdown.Item href="#/action-1"><Input type="text" placeholder="Find peoject or client" /></NavDropdown.Item>
-                                        <NavDropdown.Item href="#/action-1"><div><p>RETAIL FRESHERS</p></div></NavDropdown.Item>
-                                        <NavDropdown.Item href="#/action-1"><div><p>RETAIL FRESHERS</p></div></NavDropdown.Item>
+                                    <td><DropDown
 
+                                        selectItem={selectItem ? handleAddClick : ""}
+                                        meals={getFilteredProjects()}
+                                        value={getValue()}
+                                    /></td></div>
 
+                                <td onDoubleClick={getTimeOne}><input type="text" className="inputSize" value={timeOne ? timeOne : ''} onChange={handleChangeOne} /></td>
+                                <td onDoubleClick={getTimeTwo}><input type="text" className="inputSize" value={timeTwo ? timeTwo : ''} onChange={handleChangeTwo} /></td>
+                                <td onDoubleClick={getTimeThree}><input type="text" className="inputSize" value={timeThree ? timeThree : ''} onChange={handleChangeThree} /></td>
+                                <td onDoubleClick={getTimeFour}><input type="text" className="inputSize" value={timeFour ? timeFour : ''} onChange={handleChangeFour} /></td>
+                                <td onDoubleClick={getTimeOneFive}><input type="text" className="inputSize" value={timeFive ? timeFive : ''} onChange={handleChangeFive} /></td>
+                                <td className="back" onDoubleClick={getTimeSix}><input type="text" className="inputSize" value={timeSix ? timeSix : ''} onChange={handleChangeSix} /></td>
+                                <td className="back" onDoubleClick={getTimeSeven}><input type="text" className="inputSize" value={timeSeven ? timeSeven : ''} onChange={handleChangeSeven} /></td>
 
-                                    </NavDropdown></td></div>
-                                <td><input className="inputSize" /></td>
-                                <td><input className="inputSize" /></td>
-                                <td><input className="inputSize" /></td>
-                                <td><input className="inputSize" /></td>
-                                <td><input className="inputSize" /></td>
-                                <td><input className="inputSize" /></td>
-                                <td><input className="inputSize" /></td>
                                 <td><div style={{ display: "flex" }}>
                                     <span>00:00:00</span>
                                     {inputlist.length !== 1 ? < button style={{ border: "none", background: "white" }} onClick={() => handleRemoveClick(i)}><CloseOutlined style={{ marginLeft: "7px" }} /></button> : ''}</div></td>
@@ -130,33 +291,50 @@ function Timesheet() {
             </div>
             <div className="button-container">
                 <button onClick={handleAddClick}><PlusCircleOutlined style={{ color: "#03A9F4", fontSize: "1.2rem" }} /><span>Add new row</span></button>
-                <button> <CopyOutlined style={{ fontSize: "1.2rem" }} /><span><select style={{ border: "none", margin: "0px" }}>
+                {/* <button> <CopyOutlined style={{ fontSize: "1.2rem" }} /><span><select style={{ border: "none", margin: "0px" }}>
                     <option selected value="copy">Copy last weak</option>
                     <option value="copyone">Copy activities only</option>
-                    <option value="copytwo">Copy activities and time</option></select> </span></button>
+                    <option value="copytwo">Copy activities and time</option></select> </span></button> */}
 
-                <button onClick={() => show()}><SaveOutlined style={{ fontSize: "1.2rem" }} /><span>Save as templete</span></button>
+                <button onClick={showModal}><SaveOutlined style={{ fontSize: "1.2rem" }} /><span>Save as templete</span></button>
             </div>
+            
+            
+            
             <div>
-                {/* {display && <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                    <div style={{background:"#666666", display: "flex", justifyContent: "center", alignItems: "center " }}>
-                        <Alert style={{ width: "30%", height: "30vh", position: "absolute", background: "white", textAlign: "start" }}
-                            message="Warning Text Warning Text Warning TextW arning Text Warning Text Warning TextWarning Text"
-                            type="warning"
-                            closable
-                            onClose={onClose} />
-                            
-                    </div>
-                </div>}      */}
+                {isModalVisible &&
+                    <div>
 
-                {/* {display && <div style={{display:"flex",justifyContent:"center",alignItems:"center",backgroundColor:"#666666",width:"100%",height:"100vh"}}>
-                    <div style={{display:"flex",alignItems:"center",justifyContent:"center",width:"30%",height:"20%"}}>
-                        <h1>Templete</h1>
-                        <input type="text" />
-                    </div>
-                </div> } */}
+
+                        <Modal
+                            visible={isModalVisible}
+                            onCancel={handleCancel}
+                            footer={[
+                                <Button key="back" onClick={handleCancel} >
+                                    Cancel
+                                </Button>,
+                                <Button key="submit" type="primary" onClick={getData}  >
+                                    Save
+                                </Button>,
+
+                            ]}
+                        >
+                            <h5 className='templete-heading'>Create Templete</h5>
+                            <Input type="text" placeholder="Templete name" value={name} onChange={(e) => setName(e.target.value)} />
+
+                        </Modal>
+                    </div>}
+              </div>
+            <div>
 
             </div>
+            {templetes.length>0 ?
+             <div className="templeteContainer">
+                <h5>Templetes</h5>
+                {renderTempleteList}
+            </div>: <></>}
+
+
 
 
         </Container>

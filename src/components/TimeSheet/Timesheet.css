@@ -1,77 +1,62 @@
-.timesheetWidth{
+.timesheetWidth {
     margin-left: 13rem !important;
-    width:100% !important;
-    transition: all 0.3S ease;
-}
-.timesheetWidthCollapsed{
-    margin-left:7rem !important;
-    width:100% !important;
+    width: 100vw !important;
     transition: all 0.3S ease;
 }
 
+.timesheetWidthCollapsed {
+    margin-left: 7rem !important;
+    width: 100vw !important;
+    transition: all 0.3S ease;
+}
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
 }
-table{
+
+table {
     border-collapse: collapse;
-   
 }
-.inputSize{
-    width:68px !important;
-    margin-right: 2rem;
-    margin-top: .5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 3px;
-    border: 1px solid grey;
-    padding: 3px 0px;
 
-   
-    
-
-}
-.table-head{
+.table-head {
     background-color: #e4eaee;
     border-color: #c6d2d9;
     position: absolute;
     margin-bottom: 1rem;
-
-}
-.table-body{
- display: block;
-    margin-top: 3.5rem;
 }
 
-.table-head tr th{
+.table-body {
+    display: block;
+    margin-top: 3.7rem;
+}
+
+.table-head tr th {
     padding: 1rem 0rem;
     font-size: .8rem;
     padding-right: 1.7rem;
     padding-left: 1rem;
-    
 }
-.project-title{
-    width: 35%;
+
+.project-title {
+    width: 30%;
     text-align: left;
-    
 }
-#table-body-title{
-    margin-right: 19.5rem;
-    border: none !important;
-    background: white !important;
-}
-.dropdown-toggle::after {
-    display: none;
-  }
 
-.table-container{
-    margin-top: 5rem;
+.inputSize {
+    width: 68px !important;
+    margin-right: 1.9rem;
+    border-radius: 3px;
+    border: 1px solid grey;
+    padding: 3px 0px;
+    padding-left: 5px;
 }
-.button-container{
+
+.button-container {
     margin-top: 2rem;
-
 }
-.button-container button{
+
+.button-container button {
     margin-right: 2rem;
     background: white;
     border: 1px solid grey;
@@ -80,18 +65,38 @@ table{
     border-radius: 3px;
     cursor: pointer;
 }
-.button-container button span{
+
+.button-container button span {
     margin-left: .7rem;
     font-size: 1rem;
 }
-.table-bottom{
+
+.table-bottom {
     background: #e4eaee;
-    
-}
-.table-bottom td{
-    padding-left: 1rem;
-}
-.table-bottom td div span{
-    color:#333;
 }
 
+.table-bottom td {
+    padding-left: 1rem;
+}
+
+.table-bottom td div span {
+    color: #333;
+}
+
+.templete-heading{
+    margin-bottom: 2rem;
+
+}
+.back{
+    background:#e4eaee;
+    padding: 5px;
+}
+.templeteContainer{
+    margin-top: 3rem;
+}
+.templeteContainer h5{
+    background:#e4eaee;
+    border: 1px solid #c6d2d9 ;
+    padding: 7px 5px;
+    margin: 0px;
+}

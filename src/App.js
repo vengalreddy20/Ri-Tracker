@@ -10,6 +10,27 @@ import Clients from './components/Clients/Clients';
 import myContext from './Context';
 import Timesheet from './components/TimeSheet/Timesheet';
 
+const projects = [
+  {
+      id: "freshers",
+      value: "freshers"
+  },
+  {
+      id: "ajio",
+      value: "ajio"
+  },
+  {
+      id: "hometown",
+      value: "hometown"
+  },
+  {
+      id: "clock",
+      value: "clock"
+  }
+];
+
+
+
 export class App extends Component {
   static contextType=myContext
   constructor(props) {
@@ -17,14 +38,9 @@ export class App extends Component {
   
     this.state = {
        collapsed:true
+       
     }
   }
-
-  // handleClick=()=>{
-  //   this.setState({
-  //     name:'ajay'
-  //   })
-  // }
   
   setContextState = (obj) => {
 		console.log('setContextState function', obj);
@@ -33,12 +49,14 @@ export class App extends Component {
 		);
 	};
 
+  
+
   render() {
+    
     return (
       <myContext.Provider 
       value={{
         state:this.state,
-        // update:this.handleClick,
       setContextState:this.setContextState,
       }}
       >
@@ -49,7 +67,7 @@ export class App extends Component {
     
       <Routes>
        <>
-       <Route  exact path="/" element={<Timesheet/>} />
+       <Route  exact path="/" element={<Timesheet projects={projects}  />}  />
        <Route path="/project" element={<Project/>} />
        <Route path="/clients" element={<Clients />} />
        <Route path="/team" element={<Team />} />

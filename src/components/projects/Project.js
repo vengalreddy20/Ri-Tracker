@@ -236,7 +236,7 @@ function Project() {
 
       </Card>
 
-      <Card><h1 style={{ color: "grey", marginLeft: "5px" }}>Projects</h1></Card>
+      <Card><h4 style={{ color: "grey", marginLeft: "5px" }}>Projects</h4></Card>
 
       <TableContainer component={Paper}>
         <Table >
