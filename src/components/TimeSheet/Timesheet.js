@@ -143,7 +143,7 @@ function Timesheet(props) {
     };
 
 
-    // handle click event of the Add button
+    
     const handleAddClick = () => {
         setInputlist([...inputlist, {}]);
     };
@@ -157,8 +157,9 @@ function Timesheet(props) {
     };
 
 
-    const getData = (e) => {
-        e.preventDefault()
+    const getData = () => {
+
+
         setTempletes(templetes => [...templetes, name])
         setName("")
         setIsModalVisible(false)
@@ -192,12 +193,27 @@ function Timesheet(props) {
         setTempletes(list);
     };
 
-    const renderTempleteList = templetes.map((name, i) => (
+    const renderTempleteList = templetes.filter(item =>item.length>0).map((name) => (
         <TempleteCard name={name} handleRemoveTemplete={handleRemoveTemplete}> </TempleteCard>
 
     ))
+    const keyPressed = ({ key }) => {
+     if(name.length>0){
+        if (key === "Enter") {
+            getData()
+          } 
+     }
+              
+        
+      }
    
-
+ const handleChange=(e)=>{
+    e.preventDefault();
+    if(e.target.value.length >=0){
+        setName(e.target.value)
+    }
+    
+ }
 
 
     return (
@@ -291,10 +307,7 @@ function Timesheet(props) {
             </div>
             <div className="button-container">
                 <button onClick={handleAddClick}><PlusCircleOutlined style={{ color: "#03A9F4", fontSize: "1.2rem" }} /><span>Add new row</span></button>
-                {/* <button> <CopyOutlined style={{ fontSize: "1.2rem" }} /><span><select style={{ border: "none", margin: "0px" }}>
-                    <option selected value="copy">Copy last weak</option>
-                    <option value="copyone">Copy activities only</option>
-                    <option value="copytwo">Copy activities and time</option></select> </span></button> */}
+               
 
                 <button onClick={showModal}><SaveOutlined style={{ fontSize: "1.2rem" }} /><span>Save as templete</span></button>
             </div>
@@ -320,7 +333,7 @@ function Timesheet(props) {
                             ]}
                         >
                             <h5 className='templete-heading'>Create Templete</h5>
-                            <Input type="text" placeholder="Templete name" value={name} onChange={(e) => setName(e.target.value)} />
+                            <Input type="text" placeholder="Templete name" value={name} onChange={handleChange} onKeyPress={keyPressed} />
 
                         </Modal>
                     </div>}
@@ -333,6 +346,7 @@ function Timesheet(props) {
                 <h5>Templetes</h5>
                 {renderTempleteList}
             </div>: <></>}
+            {console.log(templetes.length)}
 
 
 

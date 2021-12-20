@@ -13,27 +13,54 @@
 }
 .team-heading {
     margin-top: 5rem;
+    font-size: 2rem;
 }
-
-.teams-tab1 {
-    border:1px solid whitesmoke;
-    padding: 10px;
-    opacity: 1;
+.top-container{
+    display: flex;
+    justify-content: space-between;
 }
-
+.memberContainer{
+    margin: 0px !important;
+}
+.tabContainer{
+    border-bottom: 1px solid  #E4EAEE ;
+    border-left: 1px solid  #E4EAEE;
+    border-right: 1px solid #E4EAEE;
+    
+    margin-top: 3rem;
+}
 /* Members */
 .members-dropdown {
     padding: 5px;
     margin-bottom: 3rem;
     border: 1px solid black;
+   
 }
 
 .members-searchbar {
-    width: 350px;
+    width: 200px;
+    height: 40px !important;
+    margin:0px 1rem;
+    
+}
+.membersContainer h6{
+    background:#E4EAEE;
+    border: 1px solid #c6d2d9 ;
     padding: 5px;
-    margin-left: 10px;
-    border: 1px solid black;
+    margin-top:15px;
+    margin-bottom: 0px;
+    
 
+}
+.membersData{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+    border:1px  solid  #c6d2d9 ;
+    margin: 0px;
+    padding:0px 10px;
+    padding-top: 5px;
 }
 
 /* Groups */

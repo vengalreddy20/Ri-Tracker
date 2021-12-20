@@ -11,7 +11,7 @@ function ClientCard(props) {
                     <p>{props.name}</p>
                     <div>
                         <EditOutlined className={styles.templeteIcons} />
-                        <CloseOutlined className={styles.templeteIcons}  />
+                       
                     </div>
                 </div>
 

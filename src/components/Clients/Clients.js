@@ -1,5 +1,5 @@
 import { Container, Card } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState,useRef} from 'react'
 import { Input, Button } from 'antd'
 
 import myContext from '../../Context'
@@ -33,7 +33,10 @@ const Clients = () => {
 
   const [clientName, setClientName] = useState("")
   const [clientData, setClientData] = useState([])
-
+  const [searchTerm,setSearchTerm]=useState("")
+  const [searchResults,setSearchResults]=useState([])
+ 
+const ref = useRef("")
 
 
   const handleChange = (e) => {
@@ -43,13 +46,34 @@ const Clients = () => {
 
   const addHandler = () => {
     setClientData(data => [...data, clientName])
-    setClientName("")
+   
   }
 
-  const renderClientList = clientData.map((name, i) => (
+
+
+  const renderClientList = clientData.map((name) => (
     <ClientCard name={name}> </ClientCard>
 
-))
+  ))
+  const keyPressed = ({ key }) => {
+    
+    if (key === "Enter") {
+      addHandler()
+    }       
+    
+  }
+  const getSearchTerm=(event)=>{
+    setSearchTerm(event.target.value)
+    if(searchTerm !==""){
+      const newClientList=clientData.filter((client)=>{
+      return (Object.values(client).join(" ").toLowerCase().includes(searchTerm.toLowerCase()))
+      })
+      setSearchResults(newClientList)
+    }else{
+      setSearchResults(clientData)
+    }
+
+  }
   return (
 
     <Container className={context.state.collapsed ? 'clientWidthCollapsed' : 'clientWidth'}>
@@ -57,35 +81,25 @@ const Clients = () => {
         <h1 className="main-heading">Clients</h1>
       </div>
       <div className="header-part">
-       
-          <select className='dropdown'>
-            <option className='option'>Show all</option>
-            <option>Show active</option>
-            <option>Show inactive</option>
-            <option>Show invited</option>
-          </select>
-          <Input type="search" placeholder="search by name" className="searchbar" />
-       
-       
-          <Input type="search" placeholder="Add by client" className='addtask' onChange={handleChange} />
-          <Button type="primary" className="addbutton" onClick={addHandler}>Add</Button>
-       
+
+        <select className='dropdown'>
+          <option className='option'>Show all</option>
+          <option>Show active</option>
+          <option>Show inactive</option>
+          <option>Show invited</option>
+        </select>
+        <Input ref={ref} type="search" placeholder="search by name" className="searchbar" value={searchTerm} onChange={getSearchTerm} />
+
+
+        <Input type="search" placeholder="Add by client" className='addtask' onChange={handleChange} onKeyPress={keyPressed} />
+        <Button type="primary" className="addbutton" onClick={addHandler} >Add</Button>
+
       </div>
       <div>
-      <h3 className="table-heading">Name</h3>
-      <p>{renderClientList}</p>
+        <h3 className="table-heading">Name</h3>
+        <p>{renderClientList}</p>
       </div>
-      
 
-      {/* <ul className="previousSearch">
-        {clientData.map((name, i) => (
-          <div>
-            {name}
-
-          </div>
-
-        ))}
-      </ul> */}
 
 
 
